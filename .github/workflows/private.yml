@@ -29,9 +29,9 @@ jobs:
           git config --global user.signingkey 219494529B47433349ADE766732DF7BB051C57C4
           git config --global commit.gpgsign true
 
-      - name: Make 10 commits
+      - name: Make 100 commits
         run: |
-          for i in {1..10}; do
+          for i in {1..100}; do
             echo "Update #$i" >> update.txt
             git add update.txt
             git commit -S -m "Automated commit #$i"
