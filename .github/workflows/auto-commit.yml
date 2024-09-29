@@ -16,17 +16,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up GPG
+        run: |
+          echo $GPG_PRIVATE_KEY | gpg --import --batch --yes
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-program /usr/bin/pinentry" >> ~/.gnupg/gpg-agent.conf
+
       - name: Set up Git
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'ivy@carryme.lol'
+          git config --global user.signingkey 219494529B47433349ADE766732DF7BB051C57C4
 
-      - name: Make 10 commits
+      - name: Make 50 commits
         run: |
           for i in {1..50}; do
             echo "Update #$i" >> update.txt
             git add update.txt
-            git commit -m "Automated commit #$i"
+            git commit -S -m "Automated commit #$i"  # Ajout de l'option -S pour signer le commit
           done
 
       - name: Pull latest changes (rebase)
@@ -34,3 +41,6 @@ jobs:
 
       - name: Force push changes
         run: git push --force origin HEAD
+
+    env:
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}  # Assure-toi d'ajouter ce secret
