@@ -20,8 +20,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'ivy@carryme.lol'
-          git config --global user.signingkey 219494529B47433349ADE766732DF7BB051C57C4
-          git config --global commit.gpgSign true
 
       - name: Make 50 commits
         run: |
