@@ -1,9 +1,12 @@
 name: Auto Commit
 
 on:
-  workflow_dispatch: # Permet de lancer manuellement le workflow
+  workflow_dispatch:
   schedule:
-    - cron: '0 */12 * * *' # Exécution automatique toutes les 12 heures
+    - cron: '0 */12 * * *'
+
+permissions:
+  contents: write
 
 jobs:
   commit:
@@ -11,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Git
         run: |
