@@ -18,7 +18,8 @@ jobs:
 
       - name: Set up GPG
         run: |
-          echo $GPG_PRIVATE_KEY | gpg --import --batch --yes
+          echo "$GPG_PRIVATE_KEY" > gpg_private.key
+          gpg --import --batch --yes gpg_private.key
           echo "use-agent" >> ~/.gnupg/gpg.conf
           echo "pinentry-program /usr/bin/pinentry" >> ~/.gnupg/gpg-agent.conf
 
@@ -33,7 +34,7 @@ jobs:
           for i in {1..50}; do
             echo "Update #$i" >> update.txt
             git add update.txt
-            git commit -S -m "Automated commit #$i"  # Ajout de l'option -S pour signer le commit
+            git commit -S -m "Automated commit #$i"
           done
 
       - name: Pull latest changes (rebase)
