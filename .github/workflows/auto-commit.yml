@@ -23,23 +23,6 @@ jobs:
           git config --global user.signingkey 219494529B47433349ADE766732DF7BB051C57C4
           git config --global commit.gpgSign true
 
-      - name: Import GPG key
-        run: |
-          echo "-----BEGIN PGP PRIVATE KEY BLOCK-----" > gpg_private.key
-          echo "lFgEZvnbFhYJKwYBBAHaRw8BAQdAcBhSVXeG7K15cwYFR6cPV9HztFvgvWsDCYgt" >> gpg_private.key
-          echo "kdtbDHQAAQDcFKcb3M6SzIAwC7TKkaC2BsgNoquW/iglcCIgdoO1aA+stCBnaXRo" >> gpg_private.key
-          echo "dWItYWN0aW9ucyA8aXZ5QGNhcnJ5bWUubG9sPoiTBBMWCgA7AhsDBQsJCAcCAiIC" >> gpg_private.key
-          echo "BhUKCQgLAgQWAgMBAh4HAheAFiEEIZSUUptHQzNJredmcy33uwUcV8QFAmb53PwA" >> gpg_private.key
-          echo "CgkQcy33uwUcV8TzIwEAizmSVIb4UilIeFXm8VasSRkXtibnrEssDCEE+2x/assB" >> gpg_private.key
-          echo "AIO501CQy7VZuZTgAI84yLY9P8a6rEgsBg/QYsUFzsgEnF0EZvnbFhIKKwYBBAGX" >> gpg_private.key
-          echo "VQEFAQEHQBoA7wiJ1zZKvTE5Y4CEobmCNDuOCZM7LDez3WENsLVkAwEIBwAA/0Cl" >> gpg_private.key
-          echo "hHjKq3xT0M9N0gZVa2FsJ8EuntuUC1U55QWlG7eYECqIdwQYFgoAIAIbDBYhBCGU" >> gpg_private.key
-          echo "lFKbR0MzSa3nZnMt97sFHFfEBQJm+dz8AAoJEHMt97sFHFfExS4A+MnPh3h8D8g+" >> gpg_private.key
-          echo "0q3GZDsiksl9WKN6qsfpzsHrRcF10RoA/ineVdBe36lkYSbSC7mKxqHkvqucuYII" >> gpg_private.key
-          echo "exY7kECZYKkI" >> gpg_private.key
-          echo "-----END PGP PRIVATE KEY BLOCK-----" >> gpg_private.key
-          gpg --import --batch --yes gpg_private.key
-
       - name: Make 50 commits
         run: |
           for i in {1..50}; do
