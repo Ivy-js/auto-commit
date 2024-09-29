@@ -1,4 +1,4 @@
-name: Auto Commit
+name: Private 🛑
 
 on:
   workflow_dispatch:
@@ -20,6 +20,8 @@ jobs:
         run: |
           echo "${{ secrets.GPG_PRIVATE_KEY }}" > gpg_private.key
           gpg --import --batch --yes gpg_private.key
+          gpg --list-secret-keys
+        shell: bash
 
       - name: Set up Git
         run: |
