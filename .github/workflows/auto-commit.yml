@@ -23,7 +23,7 @@ jobs:
 
       - name: Make 10 commits
         run: |
-          for i in {1..10}; do
+          for i in {1..50}; do
             echo "Update #$i" >> update.txt
             git add update.txt
             git commit -m "Automated commit #$i"
