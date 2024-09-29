@@ -18,8 +18,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name 'Ivy-js'
-          git config --global user.email 'conctact@1sheol.xyz'
+          git config --global user.name 'github-actions'
+          git config --global user.email 'ivy@carryme.lol'
 
       - name: Make 10 commits
         run: |
